@@ -5,9 +5,8 @@ pipeline {
         stage('Child Pipeline') {
             steps {
                 script {
-                    // Access the environment variable set by the parent pipeline
-                    def activityID = env.ACTIVITY_ID
-                    echo "Child Pipeline - Received activityID from parent: ${activityID}"
+                    def stashedActivityID = readFile('activityID.txt').trim()
+                    echo "Child Pipeline - Received activityID from parent: ${stashedActivityID}"
                     // Do other tasks as needed
                 }
             }
