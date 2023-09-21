@@ -1,14 +1,13 @@
 pipeline {
     agent any
+    environment {
+        ACTIVITY_ID = "${ACTIVITY_ID}"
+    }
     stages {
         stage('Use activityID in Job') {
             steps {
-                script {
-                    withEnv(['ACTIVITY_ID=${env.ACTIVITY_ID}']) {
-                        sh 'echo "Received activityID: $ACTIVITY_ID"'
-                        // Use ACTIVITY_ID in your job as needed
-                    }
-                }
+                sh 'echo "Received activityID: $ACTIVITY_ID"'
+                // Use ACTIVITY_ID in your job as needed
             }
         }
     }
