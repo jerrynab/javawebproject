@@ -4,10 +4,12 @@ pipeline {
             string(defaultValue: "", description: 'VM name', name: 'VM_Name')
         }
   stages {
-        stage('Write VM_Name to File') {
+        stage('Unstash VM_Name') {
             steps {
-                sh 'echo "${params.VM_Name}" > vm-name.txt'
-                stash includes: 'vm-name.txt', name: 'vm-name-stash'
+                unstash 'vm-name-stash'
+                script {
+                    VM_Name = readFile('vm-name.txt').trim()
+                }
             }
         }
        }
