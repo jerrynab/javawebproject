@@ -1,3 +1,6 @@
+@Library('my-shared-library') _
+import org.example.SharedVariables
+
 pipeline {
     agent any
 
@@ -5,12 +8,12 @@ pipeline {
         stage('Child Pipeline') {
             steps {
                 script {
-                    // Access the shared variable set by the parent pipeline
-                    def activityID = currentBuild.sharedVars.ACTIVITY_ID
-                    echo "Child Pipeline - Received activityID from parent: ${activityID}"
+                    def sharedVars = new SharedVariables()
+                    echo "Child Pipeline - Received activityID from parent: ${sharedVars.ACTIVITY_ID}"
                     // Do other tasks as needed
                 }
             }
         }
     }
 }
+
