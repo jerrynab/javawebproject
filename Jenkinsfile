@@ -8,3 +8,4 @@ pipeline {
             steps {                 sh "echo 'Received VM_Name: ${params.VM_Name}'"                 // Use VM_Name in your job as needed             }         }
     }
 }
+    }
