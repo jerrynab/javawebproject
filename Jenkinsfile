@@ -1,15 +1,17 @@
 pipeline {
-    agent any
+    agent any 
     parameters {
-        string(defaultValue: "", description: 'VM name', name: 'VM_Name')
+        string(defaultValue: "123", description: 'This is a VM name', name: 'VM_Name')
     }
     stages {
-        stage('Unstash VM_Name') {
+        stage('Stash VM_Name') {
             steps {
-                unstash 'vm-name-stash'
-                script {
-                    VM_Name = readFile('vm-name.txt').trim()
-                }
+                stash includes: 'vm-name.txt', name: 'vm-name-stash'
+            }
+        }
+        stage('Trigger Second Jenkinsfile') {
+            steps {
+                build job: "../javawebproject/master", wait: true;
             }
         }
     }
