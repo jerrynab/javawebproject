@@ -5,12 +5,12 @@ pipeline {
         stage('Child Pipeline') {
             steps {
                 script {
-                    def stashedActivityID = readFile('activityID.txt').trim()
-                    echo "Child Pipeline - Received activityID from parent: ${stashedActivityID}"
+                    // Access the shared variable set by the parent pipeline
+                    def activityID = currentBuild.sharedVars.ACTIVITY_ID
+                    echo "Child Pipeline - Received activityID from parent: ${activityID}"
                     // Do other tasks as needed
                 }
             }
         }
     }
 }
-
