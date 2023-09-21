@@ -3,7 +3,7 @@ pipeline {
         parameters {
             string(defaultValue: "", description: 'VM name', name: 'VM_Name')
         }
-       stages {
+  stages {
         stage('Write VM_Name to File') {
             steps {
                 sh 'echo "${params.VM_Name}" > vm-name.txt'
