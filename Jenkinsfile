@@ -4,11 +4,12 @@ pipeline {
             string(defaultValue: "", description: 'VM name', name: 'VM_Name')
         }
   stages {
-        stage('Unstash VM_Name') {
+        stage('Copy Artifact') {
             steps {
-                unstash 'vm-name-stash'
                 script {
-                    VM_Name = readFile('vm-name.txt').trim()
+                    
+                    def workspace = buildInfo.rawWorkspace
+                    copyArtifacts filter: 'my-file.txt', projectName: 'Project-A-Job', selector: lastSuccessful(), target: workspace
                 }
             }
         }
