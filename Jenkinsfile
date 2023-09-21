@@ -1,9 +1,15 @@
 pipeline {
     agent any 
-
+ parameters {
+        string(name: 'ACTIVITY_ID', description: 'Activity ID from Parent')
+    }
     stages {
 stage('Use activityID in Job') {           
-            steps {                 sh "echo 'Received activityID: ${env.activityID1}'"                 // Use VM_Name in your job as needed                      
+            steps {                  script {
+                    // Use the 'ACTIVITY_ID' parameter passed from the parent
+                    def activityID = params.ACTIVITY_ID
+                    echo "Received activityID from parent: ${activityID}"
+                    // Do other tasks as needed      
     }
 }
         
