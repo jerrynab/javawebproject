@@ -1,5 +1,5 @@
-@Library('my-shared-library') _
-import org.example.SharedVariables
+@Library('globalvarhelper') _
+import org.mycompany.SharedVariables
 
 pipeline {
     agent any
