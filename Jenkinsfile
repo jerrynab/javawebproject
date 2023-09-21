@@ -1,18 +1,17 @@
 pipeline {
-    agent any 
- 
-    stages {
-stage('Use activityID in Job') {           
-            steps {                  script {
-                    // Use the 'ACTIVITY_ID' parameter passed from the parent
-                    def activityID = params.ACTIVITY_ID
-                    echo "Received activityID from parent: ${activityID}"
-                    // Do other tasks as needed      
-    }
-}
-        
-    }
-}
-}
+    agent any
 
+    stages {
+        stage('Child Pipeline') {
+            steps {
+                script {
+                    // Access the environment variable set by the parent pipeline
+                    def activityID = env.ACTIVITY_ID
+                    echo "Child Pipeline - Received activityID from parent: ${activityID}"
+                    // Do other tasks as needed
+                }
+            }
+        }
+    }
+}
 
