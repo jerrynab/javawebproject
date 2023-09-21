@@ -1,11 +1,11 @@
 pipeline {
     agent any 
     parameters {
-        string(defaultValue: "123", description: 'This is a VM name', name: 'VM_Name')
+        string(defaultValue: "123", description: 'This is an activityID', name: 'activityID')
     }
     stages {
-        stage('Use VM_Name in Job') {           
-            steps {                 sh "echo 'Received VM_Name: ${params.VM_Name}'"                 // Use VM_Name in your job as needed                      
+        stage('Use activityID in Job') {           
+            steps {                 sh "echo 'Received activityID: ${params.activityID}'"                 // Use VM_Name in your job as needed                      
     }
 }
     }
