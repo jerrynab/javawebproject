@@ -7,9 +7,7 @@ pipeline {
         stage('Copy Artifact') {
             steps {
                 script {
-                    
-                    def workspace = buildInfo.rawWorkspace
-                    copyArtifacts filter: 'my-file.txt', projectName: 'Project-A-Job', selector: lastSuccessful(), target: workspace
+                        copyArtifacts filter: 'my-file.txt', projectName: 'Project-A-Job', selector: lastSuccessful(), target: workspace
                 }
             }
         }
