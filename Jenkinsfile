@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'ACTIVITY_ID', description: 'Activity ID from Parent')
-    }
+    
 
     stages {
         stage('Child Pipeline') {
