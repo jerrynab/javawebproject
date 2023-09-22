@@ -1,6 +1,7 @@
 pipeline {
     agent any
-
+parameters {
+    string(name: 'ACTIVITY_ID', defaultValue: "1234!")}
     stages {
         stage('Child Pipeline') {
             steps {
