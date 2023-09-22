@@ -1,15 +1,17 @@
-@Library('globalvarhelper') _
-import org.mycompany.SharedVariables
-
 pipeline {
     agent any
+
+    parameters {
+        string(name: 'ACTIVITY_ID', description: 'Activity ID from Parent')
+    }
 
     stages {
         stage('Child Pipeline') {
             steps {
                 script {
-                    def sharedVars = new SharedVariables()
-                    echo "Child Pipeline - Received activityID from parent: ${sharedVars.ACTIVITY_ID}"
+                    // Use the 'ACTIVITY_ID' parameter passed from the parent
+                    def activityID = params.ACTIVITY_ID
+                    echo "Received activityID from parent: ${activityID}"
                     // Do other tasks as needed
                 }
             }
