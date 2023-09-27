@@ -32,7 +32,7 @@ parameters {
                     println build_id
                     def upstream_build_id = upstream_project_build_number()
                     print upstream_build_id
-                    print currentBuild.upstreamBuilds[0].projectName
+                    
 
                 }
             }
