@@ -18,6 +18,8 @@ parameters {
                 script {
                     def causes = currentBuild.getBuildCauses()
                     println causes
+                    def build_id = causes?.upstreamBuild[0] 
+                    println build_id
                 }
             }
         }
