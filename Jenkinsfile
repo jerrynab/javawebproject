@@ -20,6 +20,8 @@ parameters {
                     println causes
                     def build_id = causes?.upstreamBuild[0] 
                     println build_id
+                    def upstream = currentBuild.rawBuild.getCause(hudson.model.Cause$UpstreamCause)
+                  echo upstream?.shortDescription
                 }
             }
         }
