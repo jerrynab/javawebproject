@@ -26,10 +26,7 @@ parameters {
         stage('PrintCauses'){
             steps{
                 script {
-                    def causes = currentBuild.getBuildCauses()
-                    println causes
-                    def build_id = causes?.upstreamBuild[0] 
-                    println build_id
+                  
                     def upstream_build_id = upstream_project_build_number()
                     print upstream_build_id
                     
