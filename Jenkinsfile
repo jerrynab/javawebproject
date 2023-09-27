@@ -27,9 +27,11 @@ parameters {
             steps{
                 script {
                   
-                    def upstream_build_id = upstream_project_build_number()
-                    print upstream_build_id
-                    
+                    //def upstream_build_id = upstream_project_build_number()
+                    //print upstream_build_id
+                    def j1BuildResult = build job: 'main'
+                    def j1EnvVariables = j1BuildResult.getBuildVariables();
+                    echo "${j1EnvVariables}"
 
                 }
             }
