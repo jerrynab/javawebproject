@@ -13,6 +13,15 @@ parameters {
                 }
             }
         }
+        stage('PrintCauses'){
+            steps{
+                script {
+                    def causes = currentBuild.getBuildCauses()
+                    println causes
+                }
+            }
+        }
+        
     }
 }
 
